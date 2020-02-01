@@ -30,11 +30,17 @@ public class ComponenteScript : MonoBehaviour
          */
         Debug.Log("colision");
         if (collision.collider.CompareTag("Cinta")) {
-            Debug.Log("toco la cinta");
             this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
             velocidad = velocidadPublica;
             //Agrega este objeto a los objetos que tiene la cinta con la que colisiona
-            collision.gameObject.GetComponent<CintaScript>().objetosActuales.Add(this);
+        }else if (collision.collider.CompareTag("CintaP")){
+            this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
+            velocidad = velocidadPublica;
+            //Agrega este objeto a los objetos que tiene la cinta con la que colisiona, y como existen dos contactos, solo se agregara una vez
+            if (!(collision.gameObject.GetComponent<CintaScript>().objetosActuales.Contains(this))){
+                collision.gameObject.GetComponent<CintaScript>().objetosActuales.Add(this);
+            }
+            
         }else if (collision.collider.CompareTag("Meta")){
             //Suma/Resta y destruye
         }else if (collision.collider.CompareTag("Basura")){
