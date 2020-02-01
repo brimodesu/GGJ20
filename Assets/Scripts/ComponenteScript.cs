@@ -10,7 +10,6 @@ public class ComponenteScript : MonoBehaviour
     public int tipo = 0;
     public GameObject[] modelos;
     private GameObject cinta = null;
-
     public
         // Start is called before the first frame update
         void Start()
