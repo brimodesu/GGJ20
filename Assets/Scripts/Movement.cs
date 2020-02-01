@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         Debug.Log("New Player created.");
+        startPos = transform.position;
     }
 
     private void Update()
