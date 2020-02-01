@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+class Player
 {
+    private int key = 0;
+    private GameObject go;
+    private Transform position;
+    
+}
+
+public class GameManager : MonoBehaviour
+{
+    public GameObject[] Players;
+
+    public Transform[] positions;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +28,8 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void OnPlayerJoined()
+    public void OnJoinPlayer()
     {
-        Debug.Log("hola"+ name);
+        
     }
 }

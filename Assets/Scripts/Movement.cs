@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
@@ -9,6 +10,10 @@ public class Movement : MonoBehaviour
     private Vector2 i_movement;
 
 
+    private void Start()
+    {
+        Debug.Log("New Player created.");
+    }
 
     private void Update()
     {
@@ -22,7 +27,7 @@ public class Movement : MonoBehaviour
 
     public void OnMovement(InputValue value)
     {
-        Debug.Log("Value: " + value);
+       /// Debug.Log("Value: " + value);
        i_movement = value.Get<Vector2>();
     }
 
