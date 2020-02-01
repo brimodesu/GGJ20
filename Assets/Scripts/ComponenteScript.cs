@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ComponenteScript : MonoBehaviour
 {
-    public float velocidadPublica = -1f;
+    public float velocidadPublica = 2f;
     private float velocidad = 0f;
+    public GameObject generador;
+    public int tipo = 0;
+    public GameObject[] modelos;
+    public 
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,14 @@ public class ComponenteScript : MonoBehaviour
         // de 'y' pues funciona con la gravedad
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, this.GetComponent<Rigidbody>().velocity.y, velocidad);
     }
+    //Reinicia el valor de el componente
+    public void valorizar()
+    {
+        this.modelos[tipo].SetActive(false);
+        tipo = Random.Range(0, 2);
+        this.modelos[tipo].SetActive(true);
+    }
+
     //Detecta cualquier colision con la cinta
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,19 +44,18 @@ public class ComponenteScript : MonoBehaviour
         if (collision.collider.CompareTag("Cinta")) {
             this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
             velocidad = velocidadPublica;
-            //Agrega este objeto a los objetos que tiene la cinta con la que colisiona
         }else if (collision.collider.CompareTag("CintaP")){
             this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
+            // Game manager velocidad
             velocidad = velocidadPublica;
-            //Agrega este objeto a los objetos que tiene la cinta con la que colisiona, y como existen dos contactos, solo se agregara una vez
-            if (!(collision.gameObject.GetComponent<CintaScript>().objetosActuales.Contains(this))){
-                collision.gameObject.GetComponent<CintaScript>().objetosActuales.Add(this);
-            }
-            
         }else if (collision.collider.CompareTag("Meta")){
             //Suma/Resta y destruye
+            this.transform.position = this.generador.transform.position;
+            this.gameObject.SetActive(false);
         }else if (collision.collider.CompareTag("Basura")){
-            //Destruir
+            //Lo regresa a la posicion del generador
+            this.transform.position = this.generador.transform.position;
+            this.gameObject.SetActive(false);
         }
     }
 
