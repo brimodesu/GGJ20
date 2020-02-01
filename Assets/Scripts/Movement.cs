@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
         if (canInteract)
         {
-            interactedObj.GetComponent<ComponenteScript>().velocidadPublica = 0f;
+            interactedObj.GetComponent<ComponenteScript>().velocidad = 0f;
             interactedObj.transform.parent = this.gameObject.transform;
             interactedObj.transform.position = pickedItemPos.position;
         }

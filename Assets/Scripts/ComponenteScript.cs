@@ -74,8 +74,7 @@ public class ComponenteScript : MonoBehaviour
             }
             else
             {
-                this.transform.position = new Vector3(collision.gameObject.transform.position.x,
-                    this.transform.position.y, this.transform.position.z);
+                this.transform.position = new Vector3(collision.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
                 // Game manager velocidad
                 velocidad = velocidadPublica;
                 cinta = collision.gameObject;
