@@ -49,8 +49,7 @@ public class ComponenteScript : MonoBehaviour
             {
                 if (cinta != collision.gameObject)
                 {
-                    this.transform.position = this.generador.transform.position;
-                    this.gameObject.SetActive(false);
+                    regresar();
                 }
             }
             else
@@ -68,8 +67,7 @@ public class ComponenteScript : MonoBehaviour
             {
                 if (cinta != collision.gameObject)
                 {
-                    this.transform.position = this.generador.transform.position;
-                    this.gameObject.SetActive(false);
+                    regresar();
                 }
             }
             else
@@ -83,16 +81,19 @@ public class ComponenteScript : MonoBehaviour
         else if (collision.collider.CompareTag("Meta"))
         {
             //Suma/Resta y destruye
-            this.transform.position = this.generador.transform.position;
-            this.gameObject.SetActive(false);
+            regresar();
         }
         else if (collision.collider.CompareTag("Basura"))
         {
             //Lo regresa a la posicion del generador
-            this.transform.position = this.generador.transform.position;
-            this.gameObject.SetActive(false);
+            regresar();
         }
     }
-            
-    
+
+    public void regresar()
+    {
+        this.transform.position = this.generador.transform.position;
+        this.gameObject.SetActive(false);
+    }
+
 }
