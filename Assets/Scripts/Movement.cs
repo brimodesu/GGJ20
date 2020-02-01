@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     private bool canDrop = false;
     private GameObject interactedObj;
 
+    private Vector3 startPos;
+    
     public Transform pickedItemPos;
     private void Start()
     {
@@ -32,12 +34,15 @@ public class Movement : MonoBehaviour
             interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
             interactedObj.transform.parent = this.gameObject.transform;
             interactedObj.transform.position = pickedItemPos.position;
+            canInteract = false;
         }
 
         if (canDrop)
         {
             interactedObj.transform.parent = null;
-            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            interactedObj = null;
+            canDrop = false;
         }
     }
 
@@ -55,15 +60,22 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag.Equals("Material"))
+        if (other.gameObject.tag.Equals("Material") && interactedObj == null)
         {
             canInteract = true;
             interactedObj = other.gameObject;
         }
 
-        if (other.gameObject.tag.Equals("CintaP"))
+        if (other.gameObject.tag.Equals("CintaP") && interactedObj != null)
         {
+            
             canDrop = true;
+            
+        }
+
+        if (other.gameObject.tag.Equals("Killer"))
+        {
+            transform.position = startPos;
         }
     }
 }
