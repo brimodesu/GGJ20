@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComponenteScript : MonoBehaviour
 {
     public float velocidadPublica = 2f;
-    private float velocidad = 0f;
+    public float velocidad = 0f;
     public GameObject generador;
     public int tipo = 0;
     public GameObject[] modelos;
@@ -22,8 +22,7 @@ public class ComponenteScript : MonoBehaviour
     void Update()
     {
         //Cambia la velocidad del objeto en cada frame y la variable velocidad solo cambiara si el objeto toca la cinta, esto sin cambiar la velocidad
-        // de 'y' pues funciona con la gravedad
-        velocidad = velocidadPublica; 
+        // de 'y' pues funciona con la graveddd
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, this.GetComponent<Rigidbody>().velocity.y, velocidad);
     }
 
