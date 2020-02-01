@@ -12,24 +12,22 @@ class Player
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] Players;
+    public List<GameObject> Players;
 
     public Transform[] positions;
-    
-    // Start is called before the first frame update
+    private int pos_assigned = 0;
     void Start()
     {
-        
+        Players = new List<GameObject>();
     }
+    
 
-    // Update is called once per frame
-    void Update()
+    public void AddPlayer(GameObject go)
     {
-        
-    }
+        Debug.Log("add player");
 
-    public void OnJoinPlayer()
-    {
-        
+        go.transform.position = positions[pos_assigned].position;
+        pos_assigned++;
+        Players.Add(go);
     }
 }

@@ -36,4 +36,5 @@ public class Movement : MonoBehaviour
         Vector3 movement = new Vector3(i_movement.x, 0,i_movement.y) * movementSpeed * Time.deltaTime;
         transform.Translate(movement);
     }
+   
 }
