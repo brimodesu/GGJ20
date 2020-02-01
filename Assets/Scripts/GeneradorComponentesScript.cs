@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class GeneradorComponentesScript : MonoBehaviour
 {
-    public Object[] componentes;
+    public GameObject[] componentes;
+    public float tiempo = 1f;
+
+    private int index = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (GameObject obj in componentes)
+        {
+            obj.GetComponent<ComponenteScript>().generador = this.gameObject;
+        }
+        Generar();   
     }
 
     // Update is called once per frame
@@ -19,6 +26,13 @@ public class GeneradorComponentesScript : MonoBehaviour
 
     void Generar()
     {
-        Instantiate(componentes[Random.Range(0, componentes.Length - 1)], this.transform.position, transform.rotation);
+        //Se activa el primer objeto de la lista y se auto invoca cada cierto tiempo
+        componentes[index].SetActive(true);
+        index++;
+        if (index == componentes.Length)
+        {
+            index = 0;
+        }
+        Invoke("Generar", tiempo);
     }
 }
