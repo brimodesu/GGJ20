@@ -9,11 +9,13 @@ public class ComponenteScript : MonoBehaviour
     public GameObject generador;
     public int tipo = 0;
     public GameObject[] modelos;
-    public 
-    // Start is called before the first frame update
-    void Start()
+    private GameObject cinta = null;
+
+    public
+        // Start is called before the first frame update
+        void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class ComponenteScript : MonoBehaviour
         // de 'y' pues funciona con la gravedad
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, this.GetComponent<Rigidbody>().velocity.y, velocidad);
     }
+
     //Reinicia el valor de el componente
     public void valorizar()
     {
@@ -40,22 +43,42 @@ public class ComponenteScript : MonoBehaviour
          * Cambiar la velocidad en el eje al que se vaya a mover por una variable publica que esta en el game manager
          * En caso de que la colision sea con un destructor, si es el del final de la cinta sumara/restara puntos y si no solo lo destruye 
          */
-        if (collision.collider.CompareTag("Cinta")) {
-            this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
-            velocidad = velocidadPublica;
-        }else if (collision.collider.CompareTag("CintaP")){
-            this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
-            // Game manager velocidad
-            velocidad = velocidadPublica;
-        }else if (collision.collider.CompareTag("Meta")){
-            //Suma/Resta y destruye
-            this.transform.position = this.generador.transform.position;
-            this.gameObject.SetActive(false);
-        }else if (collision.collider.CompareTag("Basura")){
-            //Lo regresa a la posicion del generador
-            this.transform.position = this.generador.transform.position;
-            this.gameObject.SetActive(false);
+        if (cinta == null)
+        {
+            if (collision.collider.CompareTag("Cinta"))
+            {
+                this.transform.position = new Vector3(collision.gameObject.transform.position.x,
+                    this.transform.position.y, this.transform.position.z);
+                velocidad = velocidadPublica;
+                cinta = collision.gameObject;
+            }
+            else if (collision.collider.CompareTag("CintaP"))
+            {
+                this.transform.position = new Vector3(collision.gameObject.transform.position.x,
+                    this.transform.position.y, this.transform.position.z);
+                // Game manager velocidad
+                velocidad = velocidadPublica;
+                cinta = collision.gameObject;
+            }
+            else if (collision.collider.CompareTag("Meta"))
+            {
+                //Suma/Resta y destruye
+                this.transform.position = this.generador.transform.position;
+                this.gameObject.SetActive(false);
+            }
+            else if (collision.collider.CompareTag("Basura"))
+            {
+                //Lo regresa a la posicion del generador
+                this.transform.position = this.generador.transform.position;
+                this.gameObject.SetActive(false);
+            }
+        }
+        else{
+            if (cinta != collision.gameObject)
+            {
+                this.transform.position = this.generador.transform.position;
+                this.gameObject.SetActive(false);
+            }
         }
     }
-
 }
