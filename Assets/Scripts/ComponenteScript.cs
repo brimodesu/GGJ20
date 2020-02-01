@@ -40,7 +40,6 @@ public class ComponenteScript : MonoBehaviour
          * Cambiar la velocidad en el eje al que se vaya a mover por una variable publica que esta en el game manager
          * En caso de que la colision sea con un destructor, si es el del final de la cinta sumara/restara puntos y si no solo lo destruye 
          */
-        Debug.Log("colision");
         if (collision.collider.CompareTag("Cinta")) {
             this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
             velocidad = velocidadPublica;
