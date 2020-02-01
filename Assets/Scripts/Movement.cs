@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
         if (canInteract)
         {
             interactedObj.GetComponent<ComponenteScript>().velocidad = 0f;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
             interactedObj.transform.parent = this.gameObject.transform;
             interactedObj.transform.position = pickedItemPos.position;
         }
@@ -36,6 +37,7 @@ public class Movement : MonoBehaviour
         if (canDrop)
         {
             interactedObj.transform.parent = null;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
