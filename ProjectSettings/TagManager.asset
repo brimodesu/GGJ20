@@ -9,6 +9,7 @@ TagManager:
   - Basura
   - Floor
   - CintaP
+  - Material
   layers:
   - Default
   - TransparentFX
