@@ -23,6 +23,7 @@ public class ComponenteScript : MonoBehaviour
     {
         //Cambia la velocidad del objeto en cada frame y la variable velocidad solo cambiara si el objeto toca la cinta, esto sin cambiar la velocidad
         // de 'y' pues funciona con la gravedad
+        velocidad = velocidadPublica; 
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, this.GetComponent<Rigidbody>().velocity.y, velocidad);
     }
 
