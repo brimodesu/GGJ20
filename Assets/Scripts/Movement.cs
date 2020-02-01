@@ -1,32 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float jumpHeight = 2f;
 
-    private PlayerInput controls = null;
+    private Vector2 i_movement;
 
-    private void Awake() => controls = new PlayerInput();
-    private void OnEnable() => controls.Player.Enable();
-    private void OnDisable() => controls.Player.Disable();
-    //private void Update() => Move();
 
-    public void Jump()
+
+    private void Update()
+    {
+        Move();
+    }
+
+    public void OnJump()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
     }
 
+    public void OnMovement(InputValue value)
+    {
+        Debug.Log("Value: " + value);
+       i_movement = value.Get<Vector2>();
+    }
+
     public void Move()
     {
-        var movementInput = controls.Player.Movement.ReadValue<Vector2>();
-        var movement = new Vector3
-        {
-            x = movementInput.x,
-            z = movementInput.y
-        }.normalized;
-
-
-        transform.Translate(movement * movementSpeed * Time.deltaTime);
+        Vector3 movement = new Vector3(i_movement.x, 0,i_movement.y) * movementSpeed * Time.deltaTime;
+        transform.Translate(movement);
     }
 }
