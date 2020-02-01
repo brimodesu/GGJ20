@@ -31,7 +31,7 @@ public class ComponenteScript : MonoBehaviour
         Debug.Log("colision");
         if (collision.collider.CompareTag("Cinta")) {
             Debug.Log("toco la cinta");
-            this.transform.position = new Vector3(collision.gameObject.transform.position.x , 0, this.transform.position.z);
+            this.transform.position = new Vector3(collision.gameObject.transform.position.x , this.transform.position.y, this.transform.position.z);
             velocidad = velocidadPublica;
             //Agrega este objeto a los objetos que tiene la cinta con la que colisiona
             collision.gameObject.GetComponent<CintaScript>().objetosActuales.Add(this);

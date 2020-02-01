@@ -5,10 +5,11 @@ using UnityEngine;
 public class GeneradorComponentesScript : MonoBehaviour
 {
     public Object[] componentes;
+    public float tiempo = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Generar();   
     }
 
     // Update is called once per frame
@@ -19,6 +20,8 @@ public class GeneradorComponentesScript : MonoBehaviour
 
     void Generar()
     {
-        Instantiate(componentes[Random.Range(0, componentes.Length - 1)], this.transform.position, transform.rotation);
+        //Se genera un nuevo objeto, y se vuelve a invocar a si mismo el metodo cada cierto tiempo
+        Instantiate(componentes[Random.Range(0, componentes.Length)], this.transform.position, transform.rotation);
+        Invoke("Generar", tiempo);
     }
 }
