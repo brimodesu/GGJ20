@@ -42,8 +42,9 @@ public class Movement : MonoBehaviour
         {
             interactedObj.transform.parent = null;
             interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            interactedObj = null;
             canDrop = false;
+            interactedObj.GetComponent<ComponenteScript>().regresar();
+            interactedObj = null;
         }
     }
 
