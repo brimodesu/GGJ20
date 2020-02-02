@@ -35,6 +35,8 @@ public class GeneradorComponentesScript : MonoBehaviour
                 index = 0;
             }
         }*/
+        Debug.Log(componentes[index].activeSelf.ToString());
+        componentes[index].GetComponent<ComponenteScript>().Valorizar();
         componentes[index].SetActive(true);
         index++;
         if (index == componentes.Length)
