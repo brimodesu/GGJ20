@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class Player
 {
@@ -29,5 +30,25 @@ go.GetComponent<Movement>().startPos = positions[pos_assigned].position;
         go.GetComponent<PlayerController>().EnablePlayer(pos_assigned);
         pos_assigned++;
         Players.Add(go);
+    }
+    
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene("bup1");
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+    
+    public void ManagePanelVisibility(GameObject pnl)
+    {
+        pnl.SetActive(!pnl.active);
     }
 }
