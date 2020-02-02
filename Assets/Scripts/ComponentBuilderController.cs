@@ -25,7 +25,6 @@ public class ComponentBuilderController : MonoBehaviour
 
     private void Update()
     {
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, velocidad);
         Debug.Log(isCompleted());
     }
 

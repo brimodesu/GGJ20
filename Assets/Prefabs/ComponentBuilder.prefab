@@ -52,16 +52,20 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: 52d8170007be5ef4ba2ba16a788a3bdd, type: 3}
     image_obj: {fileID: 0}
     name: 3
+    completed: 0
   - index: 1
     img: {fileID: 21300000, guid: 52d8170007be5ef4ba2ba16a788a3bdd, type: 3}
     image_obj: {fileID: 0}
     name: 4
+    completed: 0
   - index: 2
     img: {fileID: 21300000, guid: 52d8170007be5ef4ba2ba16a788a3bdd, type: 3}
     image_obj: {fileID: 0}
     name: 5
+    completed: 0
   img: {fileID: 6752533514309150300, guid: 5cec591d1a709a44e8f1db8452ad2254, type: 3}
   Canvas: {fileID: 7291484779202286771}
+  status: incomplete
 --- !u!65 &7291484777777611473
 BoxCollider:
   m_ObjectHideFlags: 0
