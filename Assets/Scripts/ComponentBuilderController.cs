@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ComponentBuilderController : MonoBehaviour
 {
     public  List<RequiredItem> required_items = new List<RequiredItem>();
+    [SerializeField] private static float velocidad = 0.5f;
 
     public GameObject img;
     public Canvas Canvas;
@@ -19,6 +20,11 @@ public class ComponentBuilderController : MonoBehaviour
         {
             CreateRequiredItemIndicator(requiredItem);
         }
+    }
+
+    private void Update()
+    {
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, velocidad);
     }
 
     private void OnCollisionEnter(Collision other)
