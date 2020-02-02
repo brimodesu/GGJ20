@@ -139,8 +139,8 @@ MonoBehaviour:
     completed: 0
   img: {fileID: 6752533514309150300, guid: 5cec591d1a709a44e8f1db8452ad2254, type: 3}
   Canvas: {fileID: 7958485216316571897}
-  damage_if_incomplete: 0.1
-  life_to_increase: 0.1
+  damage_if_incomplete: 0.4
+  life_to_increase: 0.3
 --- !u!65 &7958485215458891419
 BoxCollider:
   m_ObjectHideFlags: 0

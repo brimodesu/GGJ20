@@ -9,6 +9,8 @@ public class LevelController : MonoBehaviour
     public Image lifeImage;
 
     public GameManager _GameManager;
+
+    public GameObject _vid;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,10 @@ public class LevelController : MonoBehaviour
 
         if (live <= 0)
         {
+            GetComponent<AudioSource>().Stop();
+            _vid.SetActive(true);
          _GameManager.showGameOver();   
+     
         }
     }
 }
