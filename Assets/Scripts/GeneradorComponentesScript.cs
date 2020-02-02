@@ -35,22 +35,20 @@ public class GeneradorComponentesScript : MonoBehaviour
                 index = 0;
             }
         }*/
-        while (componentes[index].gameObject.activeSelf == true)
+        float tmpTemp = 0f;
+        if (componentes[index].gameObject.activeSelf == false)
         {
-            index++;
-            if (index == componentes.Length)
-            {
-                index = 0;
-            }
+            componentes[index].GetComponent<ComponenteScript>().Valorizar();
+            componentes[index].SetActive(true);
+            tmpTemp = tiempo;
         }
 
-        componentes[index].GetComponent<ComponenteScript>().Valorizar();
-        componentes[index].SetActive(true);
         index++;
         if (index == componentes.Length)
         {
             index = 0;
         }
-        Invoke("Generar", tiempo);
+        Invoke("Generar", tmpTemp);
+        
     }
 }
