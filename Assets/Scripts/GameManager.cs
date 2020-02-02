@@ -7,6 +7,7 @@ class Player
     private int key = 0;
     private GameObject go;
     private Transform position;
+    [SerializeField] private float velocidadCintaPrincipal = 0f;
 }
 
 public class GameManager : MonoBehaviour

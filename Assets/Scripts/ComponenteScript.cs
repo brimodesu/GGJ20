@@ -77,13 +77,15 @@ public class ComponenteScript : MonoBehaviour
                 cinta = collision.gameObject;
             }
         }
+        else if (collision.collider.CompareTag("Meta"))
+        {
+            //Suma/Resta y destruye
+            regresar();
+        }
         else if (collision.collider.CompareTag("Basura"))
         {
             //Lo regresa a la posicion del generador
             regresar();
-        }else if (collision.collider.CompareTag("Floor"))
-        {
-            Invoke("regresar", 5f);
         }
     }
 
