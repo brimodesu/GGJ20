@@ -13,6 +13,8 @@ public class Movement : MonoBehaviour
     private GameObject interactedObj;
 
     private Vector3 startPos;
+
+    public GameObject model;
     
     public Transform pickedItemPos;
     private void Start()
@@ -54,9 +56,33 @@ public class Movement : MonoBehaviour
         i_movement = value.Get<Vector2>();
     }
 
+    private void FixedUpdate()
+    {
+        if (i_movement.x > 0)
+        {
+            model.transform.rotation = Quaternion.Euler(0,180.0f  ,0);
+        }
+        else if(i_movement.x < 0)
+        {
+            model.transform.rotation = Quaternion.Euler(0,360.0f  ,0);
+
+        }
+        else
+        {
+            model.transform.rotation = Quaternion.Euler(0,90.0f  ,0);
+        }
+    }
+
     public void Move()
     {
         Vector3 movement = new Vector3(i_movement.x, 0, i_movement.y) * movementSpeed * Time.deltaTime;
+        Debug.Log(i_movement.x);
+
+  
+
+
+
+
         transform.Translate(movement);
     }
 
