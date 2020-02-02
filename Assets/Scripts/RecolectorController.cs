@@ -23,5 +23,6 @@ public class RecolectorController : MonoBehaviour
                     .life_to_increase);
             }
         }
+        other.transform.parent.GetComponent<ComponenteScript>().regresar();
     }
 }
