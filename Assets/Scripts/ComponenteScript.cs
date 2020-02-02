@@ -26,10 +26,10 @@ public class ComponenteScript : MonoBehaviour
     }
 
     //Reinicia el valor de el componente
-    public void valorizar()
+    public void Valorizar()
     {
         this.modelos[tipo].SetActive(false);
-        tipo = Random.Range(0, 2);
+        tipo = Random.Range(0, this.modelos.Length);
         this.modelos[tipo].SetActive(true);
     }
 
