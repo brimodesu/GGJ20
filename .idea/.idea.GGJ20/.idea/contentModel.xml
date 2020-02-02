@@ -28,6 +28,8 @@
           <e p="ComponenteScript.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GeneradorComponentesScript.cs" t="Include" />
+          <e p="Killer.cs" t="Include" />
+          <e p="MaterialGrabberController.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
         </e>

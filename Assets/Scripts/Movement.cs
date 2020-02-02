@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     private bool canDrop = false;
     private GameObject interactedObj;
 
-    private Vector3 startPos;
+    public Vector3 startPos;
 
     public GameObject model;
     
@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         Debug.Log("New Player created.");
-        startPos = transform.position;
+        //startPos = transform.position;
     }
 
     private void Update()
@@ -30,12 +30,12 @@ public class Movement : MonoBehaviour
 
     public void OnJump()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
+        //transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
         if (canInteract)
         {
             interactedObj.GetComponent<ComponenteScript>().velocidad = 0f;
             interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            interactedObj.transform.parent = this.gameObject.transform;
+            interactedObj.transform.parent = pickedItemPos.transform;
             interactedObj.transform.position = pickedItemPos.position;
             canInteract = false;
         }
@@ -76,17 +76,11 @@ public class Movement : MonoBehaviour
     public void Move()
     {
         Vector3 movement = new Vector3(i_movement.x, 0, i_movement.y) * movementSpeed * Time.deltaTime;
-        Debug.Log(i_movement.x);
-
-  
-
-
-
-
+       // Debug.Log(i_movement.x);
         transform.Translate(movement);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("Material") && interactedObj == null)
         {
@@ -100,10 +94,16 @@ public class Movement : MonoBehaviour
             canDrop = true;
             
         }
+        
+    }
 
-        if (other.gameObject.tag.Equals("Killer"))
-        {
-            transform.position = startPos;
-        }
+    public void resetPost()
+    {
+        transform.position = startPos;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+     
     }
 }

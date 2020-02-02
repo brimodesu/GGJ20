@@ -11,6 +11,7 @@ TagManager:
   - CintaP
   - Material
   - ComponentBuilder
+  - Killer
   layers:
   - Default
   - TransparentFX
