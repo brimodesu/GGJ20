@@ -65,9 +65,9 @@ public class Movement : MonoBehaviour
 
     public void Move()
     {
-        Vector3 movement = new Vector3(i_movement.x, 0, i_movement.y) * movementSpeed * Time.deltaTime;
+        Vector3 movement = new Vector3(i_movement.x, 0, i_movement.y);
        // Debug.Log(i_movement.x);
-        transform.Translate(movement);
+        transform.Translate(movement  * movementSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
