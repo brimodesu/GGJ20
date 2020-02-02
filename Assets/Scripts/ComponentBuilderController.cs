@@ -10,7 +10,6 @@ public class ComponentBuilderController : MonoBehaviour
 {
     public  List<RequiredItem> required_items = new List<RequiredItem>();
     [SerializeField] private static float velocidad = 0.5f;
-
     public GameObject img;
     public Canvas Canvas;
 
@@ -30,7 +29,7 @@ public class ComponentBuilderController : MonoBehaviour
         Debug.Log(isCompleted());
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag.Equals("Material"))
@@ -38,11 +37,11 @@ public class ComponentBuilderController : MonoBehaviour
             var ComponentP = other.gameObject.GetComponent<ComponenteScript>();
             //Debug.Log(ComponentP.tipo);
             bool containsItem = required_items.Any(item => item.name == ComponentP.tipo.ToString());
-           // Debug.Log(containsItem);
+           Debug.Log(containsItem);
             if (containsItem)
             {
                 IEnumerable<RequiredItem> required_item = required_items.Where(item => item.name.Equals(ComponentP.tipo.ToString()));
-               
+                int index = 0;
                 foreach (var item in required_item)
                 {
                     if (!item.completed)

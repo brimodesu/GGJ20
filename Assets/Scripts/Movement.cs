@@ -29,31 +29,14 @@ public class Movement : MonoBehaviour
         Move();
     }
 
-    private void regresarComponente()
+    public void regresarComponente()
     {
         interactedObj.GetComponent<ComponenteScript>().regresar();
     }
 
     public void OnJump()
     {
-        if(picked)
-        {
-            interactedObj.transform.parent = null;
-            //interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
-            canDrop = false;
-            picked = false; 
-            if (canDrop)
-            {
-                regresarComponente();
-            }
-            else
-            {
-                Invoke("regresarComponente", 5f);   
-            }
-
-            interactedObj = null;
-        }
+        drop();
         //transform.position = new Vector3(transform.position.x, transform.position.y + jumpHeight, transform.position.z);
         if (canInteract)
         {
@@ -68,12 +51,24 @@ public class Movement : MonoBehaviour
         
     }
 
+    public void drop()
+    {
+        if(picked)
+        {
+            interactedObj.transform.parent = null;
+            //interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
+            canDrop = false;
+            picked = false;
+            interactedObj = null;
+        }
+    }
+
     public void OnDrop()
     {
         interactedObj.transform.parent = null;
         interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
         canDrop = false;
-       
         interactedObj = null;
     }
 
