@@ -89,13 +89,18 @@ public class Movement : MonoBehaviour
             interactedObj = other.gameObject;
         }
 
-        if (other.gameObject.tag.Equals("CintaP") && interactedObj != null)
+        if (other.gameObject.tag.Equals("ComponentBuilder") && interactedObj != null)
         {
             
             canDrop = true;
             
         }
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        canInteract = false;
     }
 
     public void resetPost()
