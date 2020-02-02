@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     {
        
         
-        model.transform.eulerAngles = new Vector3( 0, (Mathf.Atan2( i_movement.y , i_movement.x) * 180f / Mathf.PI) , 0 );
+        model.transform.eulerAngles = new Vector3( 0, (Mathf.Atan2( i_movement.y , i_movement.x * -1f) * 180f / Mathf.PI) , 0 );
     }
 
     public void Move()
