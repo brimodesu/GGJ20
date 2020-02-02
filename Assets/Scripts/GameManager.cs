@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Players = new List<GameObject>();
+        PauseGame();
     }
     
 
