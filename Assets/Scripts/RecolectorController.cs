@@ -7,7 +7,7 @@ public class RecolectorController : MonoBehaviour
 {
     public LevelController _LevelController;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag.Equals("ComponentBuilder"))
         {
@@ -25,4 +25,6 @@ public class RecolectorController : MonoBehaviour
         }
         other.transform.parent.GetComponent<ComponenteScript>().regresar();
     }
+
+  
 }

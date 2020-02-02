@@ -8,9 +8,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float jumpHeight = 2f;
 
     private Vector2 i_movement;
-    private bool canInteract = false;
-    private bool canDrop = false;
-    private bool picked = false;
+    public bool canInteract = false;
+    public bool canDrop = false;
+    public bool picked = false;
     private GameObject interactedObj;
 
     public Vector3 startPos;
@@ -61,6 +61,7 @@ public class Movement : MonoBehaviour
             canDrop = false;
             picked = false;
             interactedObj = null;
+            canInteract = true;
         }
     }
 
@@ -69,7 +70,9 @@ public class Movement : MonoBehaviour
         interactedObj.transform.parent = null;
         interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
         canDrop = false;
+        picked = false;
         interactedObj = null;
+        canInteract = true;
     }
 
     public void OnMovement(InputValue value)
