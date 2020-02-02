@@ -9,7 +9,7 @@ public class GeneradorComponentesScript : MonoBehaviour
 
     private int index = 0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         foreach (GameObject obj in componentes)
         {
