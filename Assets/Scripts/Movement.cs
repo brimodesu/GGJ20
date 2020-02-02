@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
     public void OnDrop()
     {
         interactedObj.transform.parent = null;
-        interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
         canDrop = false;
        
         interactedObj = null;
