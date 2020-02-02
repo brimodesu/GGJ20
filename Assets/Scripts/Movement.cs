@@ -34,7 +34,8 @@ public class Movement : MonoBehaviour
         if (canInteract)
         {
             interactedObj.GetComponent<ComponenteScript>().velocidad = 0f;
-            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            //interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = false;
             interactedObj.transform.parent = pickedItemPos.transform;
             interactedObj.transform.position = pickedItemPos.position;
             canInteract = false;
@@ -43,11 +44,21 @@ public class Movement : MonoBehaviour
         if (canDrop)
         {
             interactedObj.transform.parent = null;
-            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            //interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().useGravity = true;
             canDrop = false;
             interactedObj.GetComponent<ComponenteScript>().regresar();
             interactedObj = null;
         }
+    }
+
+    public void OnDrop()
+    {
+        interactedObj.transform.parent = null;
+        interactedObj.GetComponent<ComponenteScript>().gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        canDrop = false;
+       
+        interactedObj = null;
     }
 
     public void OnMovement(InputValue value)

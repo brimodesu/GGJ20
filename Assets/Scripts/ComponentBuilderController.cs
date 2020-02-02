@@ -23,13 +23,16 @@ public class ComponentBuilderController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag.Equals("Material"))
         {
-            bool containsItem = required_items.Any(item => item.name == other.gameObject.name);
+            var ComponentP = other.gameObject.GetComponent<ComponenteScript>();
+            Debug.Log(ComponentP.tipo);
+            bool containsItem = required_items.Any(item => item.name == ComponentP.tipo.ToString());
             Debug.Log(containsItem);
             if (containsItem)
             {
-                IEnumerable<RequiredItem> required_item = required_items.Where(item => item.name.Equals(other.gameObject.name));
+                IEnumerable<RequiredItem> required_item = required_items.Where(item => item.name.Equals(ComponentP.tipo.ToString()));
                
                 foreach (var item in required_item)
                 {
