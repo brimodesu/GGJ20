@@ -13,7 +13,7 @@ public class ComponentBuilderController : MonoBehaviour
     public GameObject img;
     public Canvas Canvas;
 
-    public string status = "incomplete";
+   // public string status = "incomplete";
     
     private void Start()
     {
@@ -26,7 +26,7 @@ public class ComponentBuilderController : MonoBehaviour
     private void Update()
     {
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, velocidad);
-        Debug.Log(isCompleted());
+        //Debug.Log(isCompleted());
     }
 
     private void OnCollisionEnter(Collision other)
@@ -47,6 +47,7 @@ public class ComponentBuilderController : MonoBehaviour
                     if (!item.completed)
                     {
                         item.image_obj.color = new Color32(0, 255, 0, 255);
+                        item.completed = true;
                     }
                 }
             }
