@@ -13,7 +13,7 @@ public class ComponentBuilderController : MonoBehaviour
     public GameObject img;
     public Canvas Canvas;
 
-    public string status = "incomplete";
+    //public string status = "incomplete";
     
     private void Start()
     {
