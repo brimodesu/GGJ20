@@ -27,7 +27,7 @@ public class ComponentBuilderController : MonoBehaviour
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, velocidad);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag.Equals("Material"))
