@@ -7,8 +7,8 @@ public class LevelController : MonoBehaviour
 {
     public float live = 0.5f;
     public Image lifeImage;
-    
-    
+
+    public GameManager _GameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +37,7 @@ public class LevelController : MonoBehaviour
 
         if (live <= 0)
         {
-            //GameOver
+         _GameManager.showGameOver();   
         }
     }
 }

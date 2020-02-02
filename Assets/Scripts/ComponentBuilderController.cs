@@ -14,6 +14,9 @@ public class ComponentBuilderController : MonoBehaviour
     public Canvas Canvas;
 
    // public string status = "incomplete";
+
+   public float damage_if_incomplete = 0.05f;
+   public float life_to_increase = 0.05f;
     
     private void Start()
     {

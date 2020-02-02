@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public Transform[] positions;
     public int pos_assigned = 0;
+
+    public GameObject pnlGameOver, pnlCredits;
     void Start()
     {
         Players = new List<GameObject>();
@@ -34,7 +36,7 @@ go.GetComponent<Movement>().startPos = positions[pos_assigned].position;
     
     public void ReloadGame()
     {
-        SceneManager.LoadScene("bup1");
+        SceneManager.LoadScene("bup2");
     }
 
     public void PauseGame()
@@ -50,5 +52,16 @@ go.GetComponent<Movement>().startPos = positions[pos_assigned].position;
     public void ManagePanelVisibility(GameObject pnl)
     {
         pnl.SetActive(!pnl.active);
+    }
+
+    public void showGameOver()
+    {
+        ManagePanelVisibility(pnlGameOver);
+        
+    }
+    public void showCredits()
+    {
+        ManagePanelVisibility(pnlCredits);
+        
     }
 }

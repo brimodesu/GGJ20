@@ -14,10 +14,14 @@ public class RecolectorController : MonoBehaviour
             Debug.Log(other.gameObject.GetComponent<ComponentBuilderController>().isCompleted());
             if (!other.gameObject.GetComponent<ComponentBuilderController>().isCompleted())
             {
-                _LevelController.ReduceLive(0.01f);
+                _LevelController.ReduceLive(other.gameObject.GetComponent<ComponentBuilderController>()
+                    .damage_if_incomplete);
+            }
+            else
+            {
+                _LevelController.IncreaseLive(other.gameObject.GetComponent<ComponentBuilderController>()
+                    .life_to_increase);
             }
         }
     }
-
-   
 }
