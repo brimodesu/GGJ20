@@ -38,6 +38,7 @@
           <e p="PlayerController.cs" t="Include" />
           <e p="PlayersController.cs" t="Include" />
           <e p="RecolectorController.cs" t="Include" />
+          <e p="video.cs" t="Include" />
         </e>
       </e>
       <e p="GGJ20.sln" t="IncludeFlat" />
