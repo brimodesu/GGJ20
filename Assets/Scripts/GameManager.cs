@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> Players;
 
     public Transform[] positions;
-    private int pos_assigned = 0;
+    public int pos_assigned = 0;
     void Start()
     {
         Players = new List<GameObject>();
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("add player");
 go.GetComponent<Movement>().startPos = positions[pos_assigned].position;
         go.transform.position = positions[pos_assigned].position;
+        go.GetComponent<PlayerController>().EnablePlayer(pos_assigned);
         pos_assigned++;
         Players.Add(go);
     }
