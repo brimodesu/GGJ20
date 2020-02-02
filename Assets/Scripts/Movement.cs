@@ -58,19 +58,9 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (i_movement.x > 0)
-        {
-            model.transform.rotation = Quaternion.Euler(0,180.0f  ,0);
-        }
-        else if(i_movement.x < 0)
-        {
-            model.transform.rotation = Quaternion.Euler(0,360.0f  ,0);
-
-        }
-        else
-        {
-            model.transform.rotation = Quaternion.Euler(0,90.0f  ,0);
-        }
+       
+        
+        model.transform.eulerAngles = new Vector3( 0, (Mathf.Atan2( i_movement.y , i_movement.x) * 180f / Mathf.PI) , 0 );
     }
 
     public void Move()
