@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ComponenteScript : MonoBehaviour
 {
@@ -33,6 +35,11 @@ public class ComponenteScript : MonoBehaviour
         this.modelos[tipo].SetActive(true);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
     //Detecta cualquier colision con la cinta
     private void OnCollisionEnter(Collision collision)
     {
@@ -59,23 +66,13 @@ public class ComponenteScript : MonoBehaviour
             }
 
             
-        }
-        else if (collision.collider.CompareTag("CintaP"))
+        }else if(collision.collider.CompareTag("ComponentBuilder"))
         {
-            if (cinta != null)
+            if (this.transform.parent != null)
             {
-                if (cinta != collision.gameObject)
-                {
-                    regresar();
-                }
+                this.transform.parent.parent.parent.GetComponent<Movement>().drop();
             }
-            else
-            {
-                this.transform.position = new Vector3(collision.gameObject.transform.position.x, this.transform.position.y, this.transform.position.z);
-                // Game manager velocidad
-                velocidad = velocidadPublica;
-                cinta = collision.gameObject;
-            }
+            regresar();
         }
         else if (collision.collider.CompareTag("Basura"))
         {
