@@ -35,7 +35,15 @@ public class GeneradorComponentesScript : MonoBehaviour
                 index = 0;
             }
         }*/
-        Debug.Log(componentes[index].activeSelf.ToString());
+        while (componentes[index].gameObject.activeSelf == true)
+        {
+            index++;
+            if (index == componentes.Length)
+            {
+                index = 0;
+            }
+        }
+
         componentes[index].GetComponent<ComponenteScript>().Valorizar();
         componentes[index].SetActive(true);
         index++;
