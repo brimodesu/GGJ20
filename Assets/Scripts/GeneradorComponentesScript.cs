@@ -27,6 +27,14 @@ public class GeneradorComponentesScript : MonoBehaviour
     void Generar()
     {
         //Se activa el primer objeto de la lista y se auto invoca cada cierto tiempo
+        /*while (componentes[index].activeSelf == true)
+        {
+            index++;
+            if (index == componentes.Length)
+            {
+                index = 0;
+            }
+        }*/
         componentes[index].SetActive(true);
         index++;
         if (index == componentes.Length)

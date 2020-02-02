@@ -92,6 +92,7 @@ public class ComponenteScript : MonoBehaviour
     public void regresar()
     {
         this.transform.position = this.generador.transform.position;
+        this.cinta = null;
         this.gameObject.SetActive(false);
     }
 
