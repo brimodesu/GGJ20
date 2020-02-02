@@ -14,6 +14,8 @@ public class ComponentBuilderController : MonoBehaviour
     public GameObject img;
     public Canvas Canvas;
 
+    public string status = "incomplete";
+    
     private void Start()
     {
         foreach (var requiredItem in required_items)
@@ -25,6 +27,7 @@ public class ComponentBuilderController : MonoBehaviour
     private void Update()
     {
         this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, velocidad);
+        Debug.Log(isCompleted());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,10 +45,27 @@ public class ComponentBuilderController : MonoBehaviour
                
                 foreach (var item in required_item)
                 {
-                    item.image_obj.color =  new Color32(0,255,0,255);
+                    if (!item.completed)
+                    {
+                        item.image_obj.color = new Color32(0, 255, 0, 255);
+                    }
                 }
             }
         }
+    }
+
+   public  bool isCompleted()
+    {
+        
+        foreach (var requiredItem in required_items)
+        {
+            if (!requiredItem.completed)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private int offset = 0;

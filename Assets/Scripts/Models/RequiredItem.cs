@@ -11,5 +11,6 @@ namespace Models
         public Sprite img;
         public Image image_obj;
         public string name;
+        public bool completed = false;
     }
 }
