@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public void AddPlayer(GameObject go)
     {
         Debug.Log("add player");
-
+go.GetComponent<Movement>().startPos = positions[pos_assigned].position;
         go.transform.position = positions[pos_assigned].position;
         pos_assigned++;
         Players.Add(go);
