@@ -12504,7 +12504,8 @@ MonoBehaviour:
   required_items: []
   img: {fileID: 0}
   Canvas: {fileID: 0}
-  status: incomplete
+  damage_if_incomplete: 0.05
+  life_to_increase: 0.05
 --- !u!1 &1742443894
 GameObject:
   m_ObjectHideFlags: 0
