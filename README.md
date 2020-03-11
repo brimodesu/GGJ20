@@ -11,6 +11,8 @@ Global Game Jam 2020 Guatemala
 
 -----English-----
 Local multiplayer game of 2 people of split screen in which each player is represented by a small robot collector and its mission is to build a series of components with materials randomly placed on the screen of each one in order to repair an electricity generating machine.
+
+
 -----Spanish-----
 Juego multijugador local de 2 personas de pantalla dividida en el cual cada jugador es representado por un pequeño robot recolector y su misión es construir una serie componentes con materiales colocados aleatoriamente en la pantalla de cada uno para así, reparar una máquina generadora de electricidad. 
 
